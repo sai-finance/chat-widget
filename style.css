@@ -1,0 +1,261 @@
+/* General Chat Widget Styling */
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Toggle Button Styling */
+.chat-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease;
+    display: flex; /* Center icon */
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-toggle:hover {
+    background-color: #0056b3;
+}
+
+/* Chat Container Styling */
+.chat-container {
+    position: fixed;
+    bottom: 80px; /* Position above the toggle button */
+    right: 20px;
+    width: 320px; /* Slightly wider */
+    max-width: 90vw;
+    height: 450px;
+    max-height: calc(100vh - 100px); /* Prevent overlap with top */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Important for border-radius */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hidden State for Chat Container */
+.chat-container.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none; /* Prevent interaction when hidden */
+    /* Using opacity/transform allows animation.
+       If instant hide/show is preferred, use display: none; */
+}
+/* Alternative: instant hide/show
+.chat-container.hidden {
+    display: none;
+}
+*/
+
+
+/* Chat Header Styling */
+#chat-header {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+#chat-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+#chat-header .header-buttons { /* Wrapper for buttons */
+    display: flex;
+    align-items: center;
+}
+
+#chat-header button { /* Common style for header buttons */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 4px; /* Adjust padding */
+    margin-left: 8px; /* Space between buttons */
+    opacity: 0.9;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+}
+#chat-header button:hover {
+    opacity: 1;
+}
+#close-chat {
+    font-size: 24px; /* Make X slightly larger */
+}
+#new-chat {
+    font-size: 18px;
+}
+
+/* Chat Messages Area Styling */
+#chat-messages {
+    flex-grow: 1; /* Take available space */
+    overflow-y: auto; /* Enable scrolling */
+    padding: 15px;
+    background-color: #f9f9f9; /* Light background */
+    border-bottom: 1px solid #eee; /* Line above input */
+}
+
+/* Individual Message Styling */
+.message {
+    margin-bottom: 12px; /* More spacing */
+    padding: 9px 14px; /* Slightly more padding */
+    border-radius: 18px; /* More rounded */
+    max-width: 85%;
+    word-wrap: break-word;
+    line-height: 1.45; /* Improve readability */
+    font-size: 0.9rem;
+    position: relative; /* For potential future elements like timestamps */
+}
+.message.thinking { /* Style for thinking indicator */
+    font-style: italic;
+    color: #6c757d;
+    background-color: #e9ecef; /* Match bot style */
+     margin-right: auto; /* Align left */
+    border-bottom-left-radius: 5px;
+}
+
+/* User Message Specific Styling */
+.user-message {
+    background: #007bff;
+    color: white;
+    margin-left: auto; /* Align to the right */
+    border-bottom-right-radius: 5px; /* Slightly less rounded corner */
+}
+
+/* Bot Message Specific Styling */
+.bot-message {
+    background: #e9ecef;
+    color: #333;
+    margin-right: auto; /* Align to the left */
+    border-bottom-left-radius: 5px;
+}
+
+/* Styling for Markdown elements within bot messages */
+.bot-message p:last-child,
+.bot-message ul:last-child,
+.bot-message ol:last-child {
+    margin-bottom: 0;
+}
+.bot-message ul, .bot-message ol {
+    padding-left: 20px;
+    margin-top: 8px; /* Space before lists */
+    margin-bottom: 8px; /* Space after lists */
+}
+.bot-message code {
+    background-color: #dcdcdc;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 88%;
+}
+.bot-message pre {
+    background-color: #f0f0f0; /* Lighter background for pre */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto; /* Allow horizontal scroll for long code */
+    font-size: 0.85rem;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.bot-message pre code { /* Reset code style inside pre */
+     background-color: transparent;
+     padding: 0;
+     border-radius: 0;
+     font-size: inherit;
+}
+.bot-message a {
+    color: #0056b3;
+    text-decoration: underline;
+}
+.bot-message a:hover {
+    text-decoration: none;
+}
+
+
+/* Error Display Styling */
+.chat-error-display {
+    padding: 8px 15px;
+    background-color: #f8d7da;
+    color: #721c24;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #f5c6cb; /* Match message area border */
+    flex-shrink: 0;
+}
+.chat-error-display.hidden {
+    display: none;
+}
+
+
+/* Chat Input Area Styling */
+#chat-input-area {
+    padding: 10px 15px;
+    /* border-top: 1px solid #eee; removed, border added to chat-messages bottom */
+    display: flex;
+    align-items: center; /* Align items vertically */
+    background-color: #f9f9f9; /* Match message area background */
+    flex-shrink: 0; /* Prevent input area from shrinking */
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc; /* Slightly darker border */
+    border-radius: 20px; /* Pill shape */
+    margin-right: 10px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background-color: #fff; /* White background for input */
+}
+#chat-input:focus {
+    border-color: #007bff;
+}
+#chat-input::placeholder {
+    color: #888; /* Lighter placeholder text */
+}
+
+
+#send-message {
+    padding: 8px 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+#send-message:hover {
+    background-color: #0056b3;
+}
+#send-message:disabled { /* Style for disabled button */
+    background-color: #a0cfff;
+    cursor: not-allowed;
+}
