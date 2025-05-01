@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradio Chat Widget</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Include the Marked library for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Optional: Include DOMPurify for security if Marked output needs sanitizing -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script> -->
+</head>
+<body>
+
+    <!-- Chat Widget HTML Structure -->
+    <div id="chat-widget" class="chat-widget">
+        <!-- Toggle Button -->
+        <button id="chat-toggle" class="chat-toggle" title="Toggle Chat">💬</button>
+
+        <!-- Chat Container -->
+        <div id="chat-container" class="chat-container hidden">
+            <!-- Header -->
+            <div id="chat-header">
+                <h3>Gradio Assistant</h3>
+                <div class="header-buttons"> <!-- Wrapper for buttons -->
+                    <button id="new-chat" title="Start New Chat">🔄</button>
+                    <button id="close-chat" title="Close Chat">×</button>
+                </div>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="chat-messages">
+                <!-- Messages will be appended here by JavaScript -->
+            </div>
+
+            <!-- Error Display Area -->
+            <div id="chat-error" class="chat-error-display hidden"></div>
+
+            <!-- Input Area -->
+            <div id="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off">
+                <button id="send-message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file (as a module) -->
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
