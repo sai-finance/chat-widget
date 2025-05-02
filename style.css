@@ -1,3 +1,87 @@
+/* --- Keep all previous CSS rules --- */
+
+/* Chat Header Styling Adjustments */
+#chat-header {
+    padding: 8px 12px; /* Slightly adjust padding */
+    background: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*Let items space naturally*/
+    flex-shrink: 0;
+    gap: 10px; /* Add gap between header elements */
+}
+
+/* Language Selector Container */
+.lang-selector {
+    display: flex;
+    gap: 6px; /* Space between language buttons */
+    
+}
+
+/* Individual Language Button Styling */
+.lang-button {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    padding: 4px 8px; /* Smaller padding */
+    font-size: 0.8rem; /* Smaller font size */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    opacity: 0.85;
+}
+
+.lang-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+}
+
+/* Active Language Button Styling */
+.lang-button.active {
+    background-color: white;
+    color: #007bff; /* Theme color text */
+    border-color: white;
+    opacity: 1;
+    cursor: default; /* Indicate it's already selected */
+}
+
+
+/* Remove Title if header gets too cluttered */
+/*
+#chat-header h3 {
+    display: none;
+}
+*/
+
+/* Ensure header buttons group stays together */
+#chat-header .header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Keep them pushed right if title removed */
+}
+
+#chat-header .header-buttons button { /* Common style for header buttons */
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+    font-size: 22px;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+#chat-header .header-buttons button:hover {
+    opacity: 1;
+}
 /* General Chat Widget Styling */
 .chat-widget {
     position: fixed;
@@ -6,29 +90,43 @@
     z-index: 1000;
 }
 
-/* Toggle Button Styling */
+/* Toggle Button Styling (With Text) */
 .chat-toggle {
+    /* Allow width to adjust based on content */
     width: auto;
-    /*height: 50px;*/
-    border-radius: 25px;
+    /* Remove fixed height, let padding determine it */
+    /* height: 50px; */
+
+    /* Make it a rounded rectangle / pill shape */
+    border-radius: 25px; /* Adjust for desired roundness */
+
+    /* Add padding for space around the text and icon */
+    padding: 10px 20px; /* Top/Bottom 10px, Left/Right 20px - Adjust as needed */
+
+    /* Keep original background, border, color, cursor */
     background: #007bff;
-    padding: 10px 20px;
     border: none;
     color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.2;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    display: inline-flex; 
+
+    /* Adjust font styling for text and icon */
+    font-size: 1rem; /* Adjust overall size if needed (e.g., 1rem, 1.1rem) */
+    font-weight: 600; /* Make text slightly bolder */
+    line-height: 1.2; /* Ensure good vertical spacing */
+
+    /* Use flexbox to align text and icon nicely if needed (optional) */
+    display: inline-flex; /* Or just display: inline-block; */
     align-items: center;
-    gap: 8px;
+    gap: 8px; /* Adds space between text and icon */
+
+    /* Keep shadow and transition */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25); /* Slightly larger shadow */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .chat-toggle:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Enhance shadow on hover */
 }
 
 /* Chat Container Styling */
@@ -56,63 +154,83 @@
     opacity: 0;
     transform: translateY(20px);
     pointer-events: none; /* Prevent interaction when hidden */
-    /* Using opacity/transform allows animation.
-       If instant hide/show is preferred, use display: none; */
 }
-/* Alternative: instant hide/show
-.chat-container.hidden {
-    display: none;
-}
-*/
 
-
-/* Chat Header Styling */
+/* === START: Updated Header Styling === */
 #chat-header {
-    padding: 10px 15px;
+    padding: 8px 12px; /* Adjusted padding */
     background: #007bff;
     color: white;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0; /* Prevent header from shrinking */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Push items to edges */
+    flex-shrink: 0;
+    gap: 8px; /* Add small gap between direct children (lang selector and buttons) */
 }
 
-#chat-header h3 {
-    margin: 0;
-    font-size: 1rem;
+/* Language Selector Container */
+.lang-selector {
+    display: flex;
+    gap: 6px; /* Space between language buttons */
+    /* Takes space needed, doesn't push others aggressively */
+}
+
+/* Individual Language Button Styling */
+.lang-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px; /* Consistent rounding */
+    padding: 4px 8px; /* Adjust for size */
+    font-size: 0.8rem;
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    opacity: 0.85;
+}
+.lang-button:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    opacity: 1;
+}
+.lang-button.active {
+    background-color: white;
+    color: #007bff;
+    border-color: white;
+    opacity: 1;
+    cursor: default;
 }
 
-#chat-header .header-buttons { /* Wrapper for buttons */
+/* Header Action Buttons Container (Refresh, Close) */
+#chat-header .header-buttons {
     display: flex;
     align-items: center;
+    gap: 8px; /* Space between Refresh and Close buttons */
+    /* No margin-left: auto needed because of justify-content: space-between on parent */
 }
 
-#chat-header button { /* Common style for header buttons */
+/* Styling for individual header action buttons */
+#chat-header .header-buttons button {
     background: none;
     border: none;
     color: white;
-    font-size: 20px;
     cursor: pointer;
-    padding: 0 4px; /* Adjust padding */
-    margin-left: 8px; /* Space between buttons */
+    padding: 0; /* Reset padding */
+    margin: 0; /* Reset margin */
     opacity: 0.9;
-    line-height: 1;
+    line-height: 1; /* Prevent extra vertical space */
     transition: opacity 0.2s ease;
+    font-size: 22px; /* Consistent icon size */
+    width: 24px; /* Give fixed width */
+    height: 24px; /* Give fixed height */
+    display: inline-flex; /* Center icon inside */
+    justify-content: center;
+    align-items: center;
 }
-#chat-header button:hover {
+#chat-header .header-buttons button:hover {
     opacity: 1;
 }
-#close-chat {
-    font-size: 24px; /* Make X slightly larger */
-}
-#new-chat {
-    font-size: 18px;
-}
+/* === END: Updated Header Styling === */
+
 
 /* Chat Messages Area Styling */
 #chat-messages {
@@ -139,7 +257,7 @@
     color: #6c757d;
     background-color: #e9ecef; /* Match bot style */
      margin-right: auto; /* Align left */
-    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px; /* Match bot message rounding */
 }
 
 /* User Message Specific Styling */
@@ -214,52 +332,60 @@
 }
 
 
-/* Chat Input Area Styling */
+/* === START: Updated Input Area Styling === */
 #chat-input-area {
-    padding: 10px 15px;
-    /* border-top: 1px solid #eee; removed, border added to chat-messages bottom */
+    padding: 12px 15px; /* More padding */
+    border-top: 1px solid #e0e0e0; /* Slightly more visible border */
     display: flex;
-    align-items: center; /* Align items vertically */
-    background-color: #f9f9f9; /* Match message area background */
-    flex-shrink: 0; /* Prevent input area from shrinking */
+    align-items: center;
+    background-color: #f0f2f5; /* Light grey background */
+    flex-shrink: 0;
+    gap: 10px; /* Space between input and button */
 }
 
 #chat-input {
-    flex-grow: 1;
-    padding: 10px 15px;
-    border: 1px solid #ccc; /* Slightly darker border */
-    border-radius: 20px; /* Pill shape */
-    margin-right: 10px;
+    flex-grow: 1; /* Take available space */
+    padding: 10px 15px; /* Good padding */
+    border: 1px solid #ccd0d5; /* Subtle border */
+    border-radius: 18px; /* Rounded pill shape */
     font-size: 0.9rem;
     outline: none;
-    transition: border-color 0.2s ease;
-    background-color: #fff; /* White background for input */
-}
-#chat-input:focus {
-    border-color: #007bff;
-}
-#chat-input::placeholder {
-    color: #888; /* Lighter placeholder text */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #ffffff; /* White input background */
+    line-height: 1.4; /* Ensure text vertical alignment */
 }
 
+#chat-input:focus {
+    border-color: #007bff; /* Highlight on focus */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); /* Subtle glow on focus */
+}
+
+#chat-input::placeholder {
+    color: #8a8d91; /* Standard placeholder color */
+}
 
 #send-message {
-    padding: 8px 10px;
+    padding: 8px 10px; /* Adjust padding */
     background: #007bff;
     color: white;
     border: none;
-    border-radius: 20px; /* Pill shape */
+    border-radius: 18px; /* Match input rounding */
     cursor: pointer;
     font-weight: 600;
+    font-size: 0.9rem; /* Match input text size */
     transition: background-color 0.2s ease;
-    flex-shrink: 0; /* Prevent button from shrinking */
-    white-space: nowrap; /* Prevent text wrapping */
+    flex-shrink: 0;
+    white-space: nowrap;
+    line-height: 1.4; /* Match input text alignment */
 }
 
 #send-message:hover {
     background-color: #0056b3;
 }
-#send-message:disabled { /* Style for disabled button */
+
+#send-message:disabled {
     background-color: #a0cfff;
     cursor: not-allowed;
+    opacity: 0.7;
 }
+/* === END: Updated Input Area Styling === */
